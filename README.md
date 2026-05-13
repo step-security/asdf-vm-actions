@@ -6,7 +6,6 @@
 [![lint](https://github.com/step-security/asdf-vm-actions/workflows/lint/badge.svg?branch=master)](https://github.com/step-security/asdf-vm-actions/actions)
 [![test](https://github.com/step-security/asdf-vm-actions/workflows/test/badge.svg?branch=master)](https://github.com/step-security/asdf-vm-actions/actions)
 [![build](https://github.com/step-security/asdf-vm-actions/workflows/build/badge.svg?branch=master)](https://github.com/step-security/asdf-vm-actions/actions)
-[![CodeQL](https://github.com/step-security/asdf-vm-actions/workflows/CodeQL/badge.svg?branch=master)](https://github.com/step-security/asdf-vm-actions/actions)
 
 A collection of [asdf](https://github.com/asdf-vm/asdf) GitHub Actions for use in your
 workflows.
@@ -20,7 +19,6 @@ workflows.
 
 <!-- TOC -->
 * [Usage](#usage)
-  * [Automatic Actions Updating](#automatic-actions-updating)
 * [Actions](#actions)
   * [Install](#install)
   * [Plugin Test](#plugin-test)
@@ -37,36 +35,6 @@ workflows.
 steps:
   - name: Install asdf & tools
     uses: step-security/asdf-vm-actions/install@v4
-```
-
-To avoid breaking changes, use the full [Semantic Version](https://semver.org/)
-`vX.Y.Z`. Below are the available version pinning options:
-
-```yaml
-steps:
-  # Reference a specific commit (most strict, for the supply-chain paranoid)
-  - uses: step-security/asdf-vm-actions/install@f4acd427436df623426c29f7e3e9ea715be28396
-  # Reference a semver major version only (GitHub recommended)
-  - uses: step-security/asdf-vm-actions/install@v4
-  # Reference a semver version of a release (recommended)
-  - uses: step-security/asdf-vm-actions/install@v4.0.2
-  # Reference a branch (most dangerous)
-  - uses: step-security/asdf-vm-actions/install@master
-```
-
-### Automatic Actions Updating
-
-GitHub Dependabot has support for tracking GitHub Actions releases and
-automatically creating PRs with these updates.
-
-```yaml
-# .github/dependabot.yml
-version: 2
-updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly" # Check for updates to GitHub Actions every week
 ```
 
 ## Actions
@@ -183,7 +151,7 @@ jobs:
   shellcheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: step-security/asdf-vm-actions/install@v4
       - run: scripts/lint.bash
       # script runs Shellcheck, Shfmt etc installed by previous action
@@ -191,7 +159,7 @@ jobs:
   actionlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Check workflow files
         uses: docker://rhysd/actionlint:1.6.23
         with:

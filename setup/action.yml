@@ -1,6 +1,6 @@
 name: Setup asdf
 description: Install tools versioned with asdf
-author: Victor Borja <vborja@apache.org>
+author: step-security
 runs:
   using: node24
   main: main.js

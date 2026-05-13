@@ -1,6 +1,6 @@
 name: Test plugin
 description: Test your asdf plugin
-author: Victor Borja <vborja@apache.org>
+author: step-security
 runs:
   using: node24
   main: main.js

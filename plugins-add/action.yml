@@ -1,6 +1,6 @@
 name: Plugins install
 description: Install the plugins listed on your .tool-versions file.
-author: Victor Borja <vborja@apache.org>
+author: step-security
 runs:
   using: node24
   main: main.js
