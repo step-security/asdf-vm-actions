@@ -1,0 +1,38 @@
+name: Test plugin
+description: Test your asdf plugin
+author: step-security
+runs:
+  using: node24
+  main: main.js
+inputs:
+  command:
+    description: Command used to test your plugin tool. Something with --version or --help
+    required: true
+  plugin:
+    description: Plugin name to use. Defaults to repository name without asdf-
+    required: false
+  version:
+    description: Tool version to test. Defaults to `latest`
+    required: false
+    default: latest
+  giturl:
+    description: Plugin repository. Defaults to current github repository
+    required: false
+  gitref:
+    description: Branch or commit from repository to test. Defaults to current commit.
+    required: false
+  asdf_branch:
+    description: asdf branch to clone
+    required: false
+  asdf_version:
+    description: asdf version to install
+    required: false
+    default: latest
+  skip_install:
+    description: setup env without installing asdf
+    required: false
+    default: false
+  github_token:
+    description: Token used to avoid rate limit when asdf calls the GitHub API
+    required: false
+    default: ${{ github.token }}

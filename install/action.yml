@@ -1,0 +1,30 @@
+name: asdf install
+description: Install your versioned tools with asdf
+author: step-security
+runs:
+  using: node24
+  main: main.js
+inputs:
+  tool_versions:
+    description: If present, this value will be written to the .tool-versions file.
+    required: false
+  before_install:
+    description:
+      Bash script to run after plugins are installed but before `asdf install`.
+      e.g., to install npm keyring
+    required: false
+  asdf_branch:
+    description: asdf branch to clone
+    required: false
+  asdf_version:
+    description: asdf version to install
+    required: false
+    default: latest
+  skip_install:
+    description: setup env without installing asdf
+    required: false
+    default: false
+  github_token:
+    description: Token used to avoid rate limit when asdf calls the GitHub API
+    required: false
+    default: ${{ github.token }}
